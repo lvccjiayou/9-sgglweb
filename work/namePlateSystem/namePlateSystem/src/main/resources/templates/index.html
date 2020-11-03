@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>铭牌打印记录登记系统</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #systemName {
+            margin: 0;
+            font-size: 16px;
+            font-family: "Arial Black", fantasy;
+        }
+        .l-topmenu-welcome{
+            position: absolute;
+            height: 24px;
+            line-height: 24px;
+            right: 30px;
+            top: 2px;
+            color: #070A0C;
+        }
+    </style>
+</head>
+<body style="margin: 0;padding: 0" onload="loading()">
+<script src="/js/vue.js"></script>
+<script src="/js/axios.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="/css/element_index.css">
+<link rel="stylesheet" href="/css/elementCommons.css">
+<!-- 引入组件库 -->
+<script src="js/element_index.js"></script>
+<div id="app">
+    <el-container>
+
+        <el-header>
+<!--            <el-menu-->
+<!--                    :default-active="activeMenuIndex"-->
+<!--                    class="el-menu-demo"-->
+<!--                    mode="horizontal"-->
+<!--                    @select="handleSelect"-->
+<!--                    background-color="#545c64"-->
+<!--                    text-color="#fff"-->
+<!--                    active-text-color="#ffd04b">-->
+<!--                <el-menu-item index="1">用户:{{user}}</el-menu-item>-->
+<!--                <el-menu-item @click="loginout">退出</el-menu-item>-->
+<!--            </el-menu>-->
+            <h3 style="margin-left: 20px">铭牌打印记录系统</h3>
+            <div class="l-topmenu-welcome">
+                <a href="javascript:;" class="l-link2" style="color: #ffffff">{{user}}</a>
+                <span class="space" style="color: #ffffff">|</span>
+                <a href="javascript:;" @click="loginout();return false;" class="l-link2" style="color: #ffffff">
+                    注销
+                </a>
+            </div>
+        </el-header>
+
+        <el-container>
+
+            <el-aside width="auto">
+                <el-col>
+                    <el-menu
+                            default-active="1-1"
+                            class="el-menu-vertical-demo"
+                            @open="handleOpen"
+                            @close="handleClose"
+                            background-color="#545c64"
+                            text-color="#fff"
+                            active-text-color="#ffd04b">
+                        <el-submenu index="1">
+                            <template slot="title">
+                                <i class="el-icon-location"></i>
+                                <span>导航一</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="1-1">选项1</el-menu-item>
+                                <el-menu-item index="1-2" @click="toNamePlate">铭牌打印记录</el-menu-item>
+                            </el-menu-item-group>
+                        </el-submenu>
+                        <el-menu-item index="2">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">导航二</span>
+                        </el-menu-item>
+                        <el-menu-item index="3" disabled>
+                            <i class="el-icon-document"></i>
+                            <span slot="title">导航三</span>
+                        </el-menu-item>
+                    </el-menu>
+                </el-col>
+            </el-aside>
+
+            <el-container>
+                <el-main>
+
+                    <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
+                        <el-tab-pane
+                                :key="item.name"
+                                v-for="(item, index) in editableTabs"
+                                :label="item.title"
+                                :name="item.name"
+                                >
+                            <iframe src="namePlate/list.html" id="home" name="home" frameborder="0"
+                                    style="width: 100%;height: 735px"></iframe>
+                        </el-tab-pane>
+                    </el-tabs>
+
+                </el-main>
+
+                <el-footer>
+                    <div style="height:60px; line-height:60px; text-align:center;">
+                        Copyright © 凌达压缩机有限公司 信息化推进办公室开发与技术支持
+                    </div>
+                </el-footer>
+
+            </el-container>
+
+        </el-container>
+
+    </el-container>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                activeMenuIndex: '1',
+                user: '吕刚',
+                editableTabsValue: '1',
+                editableTabs: [{
+                    title: 'Tab 1',
+                    name: '1'
+                },],
+                tabTotalIndex: 1
+            }
+        },
+        methods: {
+            loginout() {
+                alert("确定退出？")
+            },
+
+            addTab(targetName) {
+                let newTabName = ++this.tabTotalIndex + '';
+                this.editableTabs.push({
+                    title: 'New Tab',
+                    name: newTabName
+                });
+                this.editableTabsValue = newTabName;
+
+                toNamePlate();
+            },
+
+            removeTab(targetName) {
+                let tabs = this.editableTabs;
+                let activeName = this.editableTabsValue;
+                if (activeName === targetName) {
+                    tabs.forEach((tab, index) => {
+                        if (tab.name === targetName) {
+                            let nextTab = tabs[index + 1] || tabs[index - 1];
+                            if (nextTab) {
+                                activeName = nextTab.name;
+                            }
+                        }
+                    });
+                }
+
+                this.editableTabsValue = activeName;
+                this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+            },
+
+            toNamePlate(){
+                document.getElementById("home").setAttribute("src","namePlate/list.html");
+            },
+        },
+        mounted() {
+
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>铭牌打印记录程序</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+<script src="/js/vue.js"></script>
+<script src="/js/axios.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="/css/element_index.css">
+<!-- 引入组件库 -->
+<script src="/js/element_index.js"></script>
+<div id="app">
+        <div id="searchCondition">
+            <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
+                <el-form-item label="审批人" >
+                    <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                </el-form-item>
+                <el-form-item label="活动区域">
+                    <el-select v-model="formInline.region" placeholder="活动区域">
+                        <el-option label="区域一" v-model="message"></el-option>
+                        <el-option label="区域二" v-model="message"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="onSubmit">查询</el-button>
+                    <el-button type="primary" @click="add">新建</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+        <div style="border: blue solid 1px;">
+            <template>
+                <el-table
+                        v-loading="loading"
+                        element-loading-text="拼命加载中"
+                        element-loading-spinner="el-icon-loading"
+                        element-loading-background="rgba(0, 0, 0, 0.8)"
+                        :data="tableData"
+                        stripe
+                        height=687
+                        style="width: 100%;border: aqua solid 1px" onload="this.loading=true">
+                    <el-table-column
+                            prop="displayDate"
+                            label="打印日期"
+                            width="180">
+                    </el-table-column>
+                    <el-table-column
+                            prop="minBarCode"
+                            label="条码最小值"
+                            width="180">
+                    </el-table-column>
+                    <el-table-column
+                            prop="maxBarCode"
+                            label="条码最大值">
+                    </el-table-column>
+                    <el-table-column
+                            prop="barCodeNum"
+                            label="打印条码数">
+                    </el-table-column>
+                    <el-table-column
+                            prop="unitCode"
+                            label="单元码">
+                    </el-table-column>
+                    <el-table-column
+                            prop="lineType"
+                            label="线别">
+                    </el-table-column>
+                    <el-table-column
+                            prop="printOrNot"
+                            label="是否打印">
+                    </el-table-column>
+                    <el-table-column
+                            prop="model"
+                            label="型号">
+                    </el-table-column>
+                    <el-table-column
+                            prop="customerCode"
+                            label="客户代码">
+                    </el-table-column>
+                </el-table>
+            </template>
+        </div>
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message: "hello world",
+            tableData: null,
+            loading: false,
+            formInline: {
+                user: '',
+                region: ''
+            },
+        },
+        mounted() {
+            axios
+                .get('http://localhost:8088/nameplate/get')
+                .then(response => (
+                    result = response.data,
+                        this.tableData = result,
+                        console.info(this.tableData)
+                ))
+                .catch(function (error) {
+                    console.log(error);
+                })
+
+        },
+        methods: {
+            onSubmit() {
+                let user = this.formInline.user;
+                let region = this.formInline.region;
+                alert("查询" + user + region);
+            },
+            onAdd(){
+
+            }
+        },
+
+    })
+</script>
+</body>
+</html>

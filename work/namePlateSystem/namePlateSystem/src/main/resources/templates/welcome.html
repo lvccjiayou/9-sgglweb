@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="/js/vue.js"></script>
+<script src="/js/axios.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="/css/element_index.css">
+<link rel="stylesheet" href="/css/elementCommons.css">
+<!-- 引入组件库 -->
+<script src="js/element_index.js"></script>
+<div id="app">
+    <fieldset>
+        <legend>欢迎使用</legend>
+        您好, 欢迎使用{{systemName}}!
+    </fieldset>
+    <fieldset>
+        <legend>系统说明</legend>
+        <ul>
+            <li>本系统支持多浏览器:IE 6.0,FireFox 3.0,Opera,建议使用IE浏览器,某些浏览器第三方插件可能影响使用效果,请卸载</li>
+            <li>10年以前旧版系统数据可查询与导出</li>
+            <li>2012.9.15系统需求变化升级,升级后系统增加登录日志、邮件记录、用户单一终端登录验证限制</li>
+            <li>系统使用过程中出现问题请将出错页面截图,同时发送ip至技术支持人员邮箱(080901)</li>
+            <li style="color:blue">流程优化:删除部门审核节点和生产部后节点,生产部签审完后邮件通知申请人和部门领导,优化前的单按原有流程走</li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>流程图</legend>
+        <!--    <img alt="" src="images/flowchart.gif" width="100%">-->
+    </fieldset>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            systemName: "铭牌打印记录系统",
+        }
+    })
+</script>
+</body>
+</html>
