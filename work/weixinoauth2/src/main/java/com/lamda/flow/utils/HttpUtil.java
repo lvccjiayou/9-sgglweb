@@ -1,6 +1,5 @@
 package com.lamda.flow.utils;
 
-import com.lamda.flow.entity.MeterInStockCheckEntity;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,7 +11,6 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 @Component

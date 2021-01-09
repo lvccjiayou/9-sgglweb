@@ -24,17 +24,17 @@ public class AdjustTask {
         JSONObject objectToJson = JSONObject.fromObject(adjustEntity);
         JSONObject jsonObject = null;
 
-        log.info("------------》校对审批《-----------");
+        log.info("------------》" + adjustEntity.getBpmStatus() + "审批《-----------");
         String url = "http://172.80.11.62:8181/part/rest/meterLedgerApiController/adjustTaskSave?comment=" + comment;
         if (objectToJson != null) {
             jsonObject = httpUtil.doPostParams(url, objectToJson, token);
         }
 
         if (jsonObject.get("ok").equals(true)) {
-            log.info("------------》校对审批成功《-----------");
+            log.info("------------》" + adjustEntity.getBpmStatus() + "审批成功《-----------");
             return jsonObject.toString();
         } else {
-            log.info("------------》校对审批失败《-----------");
+            log.info("------------》" + adjustEntity.getBpmStatus() + "审批失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
             return null;
         }

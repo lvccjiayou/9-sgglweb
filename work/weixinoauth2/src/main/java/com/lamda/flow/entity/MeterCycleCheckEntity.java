@@ -2,8 +2,6 @@ package com.lamda.flow.entity;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
-
 /**   
  * @Title: Entity
  * @Description: 量仪周期检定

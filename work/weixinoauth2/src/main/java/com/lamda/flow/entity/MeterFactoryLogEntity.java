@@ -2,7 +2,6 @@ package com.lamda.flow.entity;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
 
 /**   
  * @Title: Entity
