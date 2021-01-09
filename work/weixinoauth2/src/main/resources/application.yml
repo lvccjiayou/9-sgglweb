@@ -1,0 +1,14 @@
+server:
+  port: 8089
+
+spring:
+  datasource:
+    password: Password!23
+    username: root
+    url: jdbc:mysql://172.75.200.155:3306/label_print?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#  redis:
+#    host: 172.75.200.148
+#    port: 6379
+#    password:
