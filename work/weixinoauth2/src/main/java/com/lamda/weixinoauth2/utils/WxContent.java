@@ -20,5 +20,8 @@ public class WxContent {
     public static String WX_GET_USERID_URL="https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=ACCESS_TOKEN&code=CODE";
     /**读取通讯录用户信息URL，固定*/
     public static String WX_GET_USERINFO_URL="https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&userid=USERID";
-
+    /**获取企业jsapi的参数的URL，固定*/
+    public static String WX_GET_JSAPI_TICKET_URL="https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=ACCESS_TOKEN";
+    /**获取企业jsapi的参数的URL，固定*/
+    public static String WX_GET_AGENT_JSAPI_TICKET_URL="https://qyapi.weixin.qq.com/cgi-bin/ticket/get?access_token=ACCESS_TOKEN&type=agent_config";
 }

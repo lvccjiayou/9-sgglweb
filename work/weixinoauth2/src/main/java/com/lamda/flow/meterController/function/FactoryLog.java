@@ -1,7 +1,6 @@
 package com.lamda.flow.meterController.function;
 
 import com.lamda.flow.entity.MeterFactoryLogEntity;
-import com.lamda.flow.entity.MeterInStockCheckEntity;
 import com.lamda.flow.utils.HttpUtil;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

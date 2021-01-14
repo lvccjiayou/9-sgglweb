@@ -32,4 +32,11 @@ public class MyApply {
 
     }
 
+    @RequestMapping("/meterTest")
+    @ResponseBody
+    public String meterTest(){
+        log.info("------------》测试《-----------");
+        return "meter请求测试>----------------";
+    }
+
 }
