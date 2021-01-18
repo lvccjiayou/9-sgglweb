@@ -36,7 +36,7 @@ public class Collect {
         } else {
             log.info("------------》领用出库检定申请失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

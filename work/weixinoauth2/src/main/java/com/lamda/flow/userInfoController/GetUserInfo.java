@@ -24,12 +24,11 @@ public class GetUserInfo {
         log.info("----------》获取用户信息《------------");
         String url = "http://172.80.11.62:8181/part/rest/user/" + userId;
         JSONObject jsonObject = httpUtil.doGetJson(url);
-        if (jsonObject != null) {
+        if (jsonObject.get("ok").equals(true)) {
             log.info("----------》获取用户信息完成《------------");
-            return jsonObject.toString();
         } else {
             log.info("----------》没有该用户信息《------------");
-            return null;
         }
+        return jsonObject.toString();
     }
 }

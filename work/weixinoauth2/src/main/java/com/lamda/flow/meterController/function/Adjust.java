@@ -37,7 +37,7 @@ public class Adjust {
         } else {
             log.info("------------》校对申请失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

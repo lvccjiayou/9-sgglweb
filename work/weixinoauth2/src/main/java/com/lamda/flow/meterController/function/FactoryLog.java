@@ -36,7 +36,7 @@ public class FactoryLog {
         } else {
             log.info("------------》分厂操作申请失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

@@ -25,13 +25,12 @@ public class GetUserByRole {
         log.info("------------》获取量仪检定员台账《-----------");
         String url = "http://172.80.11.62:8181/part/rest/meterLedgerApiController/getUserByRole?roleCode=" + roleCode;
         JSONObject jsonObject = httpUtil.doPostJson(url, token);
-        if (jsonObject != null) {
+        if (jsonObject.get("ok").equals(true)) {
             log.info("------------》获取量仪检定员台账数据成功《-----------");
-            return jsonObject.toString();
         } else {
             log.info("------------》获取量仪检定员台账数据失败《-----------");
-            return null;
         }
+        return jsonObject.toString();
 
     }
 }

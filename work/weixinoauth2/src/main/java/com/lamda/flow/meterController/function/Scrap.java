@@ -37,7 +37,7 @@ public class Scrap {
         } else {
             log.info("------------》报废申请失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

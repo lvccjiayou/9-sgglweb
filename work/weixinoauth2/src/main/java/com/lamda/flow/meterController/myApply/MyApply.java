@@ -27,7 +27,7 @@ public class MyApply {
         } else {
             log.info("------------》获取我的申请列表数据失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

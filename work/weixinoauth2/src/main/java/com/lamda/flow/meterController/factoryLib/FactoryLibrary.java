@@ -32,7 +32,7 @@ public class FactoryLibrary {
         } else {
             log.info("------------》获取分厂库量仪数据失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
     }
 }

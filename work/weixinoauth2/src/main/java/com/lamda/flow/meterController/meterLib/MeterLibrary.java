@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/meter")
 @CrossOrigin(maxAge = 10)
@@ -32,8 +34,24 @@ public class MeterLibrary {
         } else {
             log.info("------------》获取计量库量仪台账数据失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
+    }
+
+    @RequestMapping("/getMeterByMeterNo")
+    @ResponseBody
+    public String getMeterByMeterId(@RequestParam("meterNo") String meterNo, @RequestParam("token") String token) throws IOException {
+        log.info("------------》根据meterNo获取量仪台账《-----------");
+        String url = "http://172.80.11.62:8181/part/rest/meterLedgerApiController/getMeterByBarCode?meterNo=" + meterNo;
+        JSONObject jsonObject = httpUtil.doPostJson(url, token);
+        if (jsonObject.get("ok").equals(true)) {
+            log.info("------------》根据meterNo获取量仪台账数据成功《-----------");
+            return jsonObject.toString();
+        } else {
+            log.info("------------》根据meterNo获取量仪台账数据失败《-----------");
+            log.info("异常信息：" + jsonObject.toString());
+            return jsonObject.toString();
+        }
     }
 }

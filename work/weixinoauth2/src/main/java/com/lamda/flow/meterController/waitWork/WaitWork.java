@@ -31,7 +31,7 @@ public class WaitWork {
             return jsonObject.toString();
         } else {
             log.info("------------》获取待办工作列表数据失败《-----------");
-            return null;
+            return jsonObject.toString();
         }
     }
 }

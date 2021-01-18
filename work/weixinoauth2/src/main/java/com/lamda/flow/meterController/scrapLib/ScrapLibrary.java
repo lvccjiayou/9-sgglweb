@@ -30,7 +30,7 @@ public class ScrapLibrary {
         } else {
             log.info("------------》获取报废库量仪数据失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
     }
 }

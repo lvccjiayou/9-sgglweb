@@ -36,7 +36,7 @@ public class OutStockTask {
         } else {
             log.info("------------》出库审批失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

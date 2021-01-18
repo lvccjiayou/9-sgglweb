@@ -36,7 +36,7 @@ public class InStock {
         } else {
             log.info("------------》入库检定申请失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

@@ -32,8 +32,7 @@ public class GetToken {
             return token;
         } else {
             log.info("-----------》获取token失败《------------");
-
-            return null;
+            return "用户不存在";
         }
 
     }

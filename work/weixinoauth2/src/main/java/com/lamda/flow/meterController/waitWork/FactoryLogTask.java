@@ -35,7 +35,7 @@ public class FactoryLogTask {
         } else {
             log.info("------------》" + factoryLogEntity.getAction() + "审批失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }

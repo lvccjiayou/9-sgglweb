@@ -36,7 +36,7 @@ public class CycleCheckTask {
         } else {
             log.info("------------》周期检定失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }
@@ -60,7 +60,7 @@ public class CycleCheckTask {
         } else {
             log.info("------------》周期检定审批失败《-----------");
             log.info("异常信息：" + jsonObject.toString());
-            return null;
+            return jsonObject.toString();
         }
 
     }
